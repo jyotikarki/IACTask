@@ -9,13 +9,3 @@ resource "google_storage_bucket" "bucket" {
   force_destroy = true
 }
 
-variable "project_id" {}
-variable "region" {
-  default = "us-central1"
-}
-
-variable "bucket_name" {}
-variable "location" {
-  default = "US"
-}
- 
