@@ -1,7 +1,7 @@
 provider "google" {
   project = var.project_id
   region  = var.region
-}
+}  
 
 resource "google_storage_bucket" "bucket" {
   name          = var.bucket_name
@@ -13,7 +13,9 @@ variable "project_id" {}
 variable "region" {
   default = "us-central1"
 }
+
 variable "bucket_name" {}
 variable "location" {
   default = "US"
 }
+ 
