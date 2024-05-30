@@ -1,6 +1,6 @@
 provider "google" {
   project = var.project_id
-  region  = var.region
+  region  = var.location
 }  
 
 resource "google_storage_bucket" "bucket" {
