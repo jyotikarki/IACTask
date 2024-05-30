@@ -23,7 +23,7 @@ resource "google_storage_bucket_object" "function_zip" {
 }
 
 resource "google_cloudfunctions_function" "function" {
-  name        = "my-cloud-3"
+  name        = "my-cloud-4"
   description = "My Cloud Function"
   runtime     = "python39"
   available_memory_mb   = 256
