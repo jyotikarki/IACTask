@@ -33,6 +33,6 @@ variable "source_archive_bucket" {
 variable "source_archive_object" {
   description = "The ID of your Google Cloud project"
   type        = string
-  default = "function.zip
+  default = "function.zip"
 }
 
