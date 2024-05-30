@@ -10,15 +10,29 @@ variable "region" {
   default     = "us-central1"
 }
 
-variable "bucket_name" {
-  description = "The name of the GCS bucket for Cloud Function deployment"
-  type        = string
-  default = "lastandfinalbucket3211"
-}
 
-variable "trigger_bucket_name" {
+
+variable "pubsubname" {
   description = "The name of the GCS bucket to trigger the Cloud Function"
   type        = string
-  default = "lastandfinalbucket3211trigger"
+  default = "pubsub-11111112"
+}
+
+variable "functionname" {
+  description = "The ID of your Google Cloud project"
+  type        = string
+  default = "itsme-1234-func"
+}
+
+variable "source_archive_bucket" {
+  description = "The ID of your Google Cloud project"
+  type        = string
+  default = "tffinalgcsbucket1234"
+}
+
+variable "source_archive_object" {
+  description = "The ID of your Google Cloud project"
+  type        = string
+  default = "function.zip
 }
 

@@ -10,11 +10,18 @@ module "gcs" {
 
 module "cloud_function" {
    source  = "./modules/cloud_function"
+   depends_on = [module.bigquery]
 }
 
 
 module "bigquery" {
   source      = "./modules/bigquery"
+  depends_on = [module.pubsub]
+}
+
+module "pubsub" {
+  source      = "./modules/pubsub"
+  depends_on = [module.gcs]
 }
 
 module "common" {

@@ -7,13 +7,13 @@ variable "project_id" {
 variable "region" {
   description = "The region for the BigQuery dataset"
   type        = string
-  default     = "US"
+  default     = "us-central1"
 }
 
 variable "dataset_id" {
   description = "The ID of the BigQuery dataset"
   type        = string
-  default     = "finalllyyyyyyy"
+  default     = "staging_new"
 }
 
 variable "dataset_description" {
@@ -26,10 +26,4 @@ variable "default_table_expiration_ms" {
   description = "Default expiration time for tables in the dataset, in milliseconds"
   type        = number
   default     = null
-}
-
-variable "table_id" {
-  description = "The ID of the BigQuery table"
-  type        = string
-  default     = "mylasttttableeee"
 }

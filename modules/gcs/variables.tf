@@ -1,14 +1,19 @@
+variable "project_id" {
+  description = "The ID of your Google Cloud project"
+  type        = string
+  default     = "itsme-1234"
+} 
 variable "bucket_name" {
   description = "The name of the GCS bucket"
   type        = string
-  default = "lastandfinalbucket1122222"
+  default = "tffinalgcsbucket1234"
  
 }
 
-variable "location" {
+variable "region" {
   description = "The location of the GCS bucket"
   type        = string
-  default     = "US"
+  default     = "us-central1"
 }
 
 variable "force_destroy" {
