@@ -13,7 +13,7 @@ variable "region" {
 variable "vpc_name" {
   description = "The name of the VPC network."
   type        = string
-  default = "myvpc11"
+  default = "myvpc112"
 }
 
 variable "vpc_cidr_block" {

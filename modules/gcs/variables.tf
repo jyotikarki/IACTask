@@ -1,7 +1,7 @@
 variable "bucket_name" {
   description = "The name of the GCS bucket"
   type        = string
-  default = "lastandfinalbucket1122"
+  default = "lastandfinalbucket11222"
  
 }
 
