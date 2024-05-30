@@ -13,12 +13,12 @@ variable "region" {
 variable "bucket_name" {
   description = "The name of the GCS bucket for Cloud Function deployment"
   type        = string
-  default = "lastandfinalbucket321"
+  default = "lastandfinalbucket3211"
 }
 
 variable "trigger_bucket_name" {
   description = "The name of the GCS bucket to trigger the Cloud Function"
   type        = string
-  default = "lastandfinalbucket321trigger"
+  default = "lastandfinalbucket3211trigger"
 }
 
