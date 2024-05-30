@@ -1,18 +1,16 @@
-variable "project_id" {
-  description = "The project ID to deploy to"
-  type        = string
-}
 
-variable "bucket_name" {
-  description = "The name of the bucket to create"
-  type        = string
-}
-variable "region" {
-  default = "us-central1"
-}
 
 variable "location" {
-  default = "US"
+  description = "The location of the resources."
+  type        = string
+  default     = "us-central1"
 }
- 
+
+variable "project_id" {
+  description = "The ID of your Google Cloud project"
+  type        = string
+  default = "itsme-1234"
+  
+}
+
 

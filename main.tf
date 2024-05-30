@@ -8,4 +8,17 @@ resource "google_storage_bucket" "bucket" {
   location      = var.location
   force_destroy = true
 }
+module "gcs" {
+  source  = "./modules/gcs"
+}
+
+module "cloud_function" {
+   source  = "./modules/cloud_function"
+}
+
+
+module "bigquery" {
+  source      = "./modules/bigquery"
+}
+
 
