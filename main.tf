@@ -17,4 +17,9 @@ module "bigquery" {
   source      = "./modules/bigquery"
 }
 
+module "common" {
+  source      = "./modules/common"
+}
+
+
 
