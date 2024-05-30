@@ -19,14 +19,10 @@ jobs:
       id: auth
       uses: google-github-actions/auth@v1
       with:
-        workload_identity_provider: "projects/671902319686/locations/global/workloadIdentityPools/github-actions-pool-new/providers/github-actions-provider"
-        service_account: "github-actions-sa@itsme-1234.iam.gserviceaccount.com"
+        workload_identity_provider: "projects/671902319686/locations/global/workloadIdentityPools/githubaction-pool-jojo/providers/githubaction-jojoprovider"
+        service_account: "terraformfinal@itsme-1234.iam.gserviceaccount.com"
 
-    - name: Configure gcloud CLI
-      run: |
-        gcloud config set project ${{ secrets.GCP_PROJECT_ID }}
-        gcloud config set auth/impersonate_service_account github-actions-sa@${{ secrets.GCP_PROJECT_ID }}.iam.gserviceaccount.com
-
+    
     - name: Initialize Terraform
       run: terraform init
 
