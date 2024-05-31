@@ -7,13 +7,13 @@ variable "project_id" {
 variable "region" {
   description = "The region where the resources will be created."
   type        = string
-  default     = "US"
+  default     = "us-central1"
 }
 
 variable "vpc_name" {
   description = "The name of the VPC network."
   type        = string
-  default = "myvpc11dhgcfjgcjgcjgvcjvc22sd"
+  default = "vendorvpc123"
 }
 
 variable "vpc_cidr_block" {
@@ -29,7 +29,7 @@ variable "public_subnets" {
   }))
   default = [
     {
-      name = "default-pubnvcngvnvlic-subndet-3ef"
+      name = "vendorvpc-publicsubnet123"
       cidr = "10.0.1.0/24"
     }
   ]
@@ -43,7 +43,7 @@ variable "private_subnets" {
   }))
   default = [
     {
-      name = "default-prmbljivdate-subnet-evd3"
+      name = "vendorvpc-privatesubnet123"
       cidr = "10.0.3.0/24"
     }
   ]

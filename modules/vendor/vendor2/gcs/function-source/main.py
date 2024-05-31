@@ -17,7 +17,7 @@ with open("./schemas.yaml") as schema_file:
 
 # Set up Google Cloud clients
 PROJECT_ID = os.getenv('GCP_PROJECT', 'itsme-1234')  # Default to 'itsme-1234' if GCP_PROJECT env var is not set
-BQ_DATASET = 'staging_new_11'
+BQ_DATASET = 'vendor2_bq_dataset'
 CS = storage.Client()
 BQ = bigquery.Client()
 job_config = bigquery.LoadJobConfig()

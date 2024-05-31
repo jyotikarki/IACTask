@@ -1,0 +1,10 @@
+{
+    "project_id": "itsme-1234",
+    "region": "us-central1",
+    "dataset_id": "vendor2_bq_dataset",
+    "pubsubname": "vendor2_pubsub1234",
+    "functionname": "vendor2_function1234",
+    "entry_point": "hello_gcs",
+    "bucket_name": "vendor2gcs-1234"
+  }
+  

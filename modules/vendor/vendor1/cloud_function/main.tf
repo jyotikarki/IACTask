@@ -4,13 +4,13 @@ resource "google_cloudfunctions_function" "function" {
   runtime     = "python39"
 
   available_memory_mb   = 256
-  source_archive_bucket = var.source_archive_bucket
+  source_archive_bucket = var.bucket_name
   source_archive_object = var.source_archive_object
-  entry_point           = "hello_gcs"
+  entry_point           = var.entry_point
 
   event_trigger {
     event_type = "google.storage.object.finalize"
-    resource   = var.source_archive_bucket
+    resource   = var.bucket_name
   }
 
   environment_variables = {
