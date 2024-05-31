@@ -13,7 +13,7 @@ variable "region" {
 variable "dataset_id" {
   description = "The ID of the BigQuery dataset"
   type        = string
-  default     = "staging_new"
+  default     = "staging_new_1"
 }
 
 variable "dataset_description" {

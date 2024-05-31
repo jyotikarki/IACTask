@@ -16,5 +16,5 @@ variable "region" {
 variable "pubsub_topic" {
   description = "The region to deploy to"
   type        = string
-  default     = "pubsub-11111112"
+  default     = "pubsub-111111121"
 }

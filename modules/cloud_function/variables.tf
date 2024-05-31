@@ -15,19 +15,19 @@ variable "region" {
 variable "pubsubname" {
   description = "The name of the GCS bucket to trigger the Cloud Function"
   type        = string
-  default = "pubsub-11111112"
+  default = "pubsub-11111113"
 }
 
 variable "functionname" {
   description = "The ID of your Google Cloud project"
   type        = string
-  default = "itsme-1234-func"
+  default = "itsme-1234-funct"
 }
 
 variable "source_archive_bucket" {
   description = "The ID of your Google Cloud project"
   type        = string
-  default = "tffinalgcsbucket1234"
+  default = "tffinalgcsbucket12345"
 }
 
 variable "source_archive_object" {

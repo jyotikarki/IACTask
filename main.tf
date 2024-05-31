@@ -3,6 +3,12 @@ provider "google" {
   region  = var.location
 }  
 
+terraform {
+  backend "gcs" {
+    bucket  = "terraform-remote-backend-bucket"
+    prefix  = "terraform/state"
+  }
+}
 
 module "gcs" {
   source  = "./modules/gcs"
