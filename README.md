@@ -1,4 +1,4 @@
-# Infrastructure as Code (IaC) Task Documentation
+# Infrastructure as Code (IaC) 
 
 This document outlines the steps to set up and deploy Google Cloud Platform (GCP) resources using Terraform modules. The resources include Google Cloud Storage (GCS), Cloud Functions, BigQuery, and a VPC network. The deployment process is automated using GitHub Actions and authenticated with GCP via OpenID Connect (OIDC).
 
