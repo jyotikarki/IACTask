@@ -6,7 +6,7 @@ variable "project_id" {
 variable "bucket_name" {
   description = "The name of the GCS bucket"
   type        = string
-  default = "tffinalgcsbucket123456"
+  default = "tffinalgcsbucket12345611"
  
 }
 
