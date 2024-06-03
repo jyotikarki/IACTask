@@ -10,6 +10,7 @@ terraform {
   }
 }
 
+
 locals {
   vendor_data = { for vendor, path in var.vendor_configs : 
     vendor => jsondecode(file(path))
