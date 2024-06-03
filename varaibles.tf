@@ -7,3 +7,6 @@ variable "vendor_configs" {
 }
 
 
+
+
+
