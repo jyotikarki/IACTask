@@ -12,7 +12,7 @@ terraform {
 
 locals {
   vendor_data = { for vendor, path in var.vendor_configs : 
-    vendor => jsondecode(file(path))
+    vendor => jsondecode(file(${path.module}/path))
   }
   vendors = [for v in keys(local.vendor_data) : {
     name         = v
