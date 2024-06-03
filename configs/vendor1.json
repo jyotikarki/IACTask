@@ -6,7 +6,7 @@
     "functionname": "vendor1_function1234",
     "entry_point": "hello_gcs",
     "bucket_name": "vendor1gcs-1234",
-    "pubsub_topic": "vendor1_pubsubtopic"
+    /*"pubsub_topic": "vendor1_pubsubtopic"*/
   }
   
 
