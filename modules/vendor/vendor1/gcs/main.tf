@@ -1,7 +1,7 @@
 
 resource "google_storage_bucket" "bucket" {
   name          = var.bucket_name
-  region      = var.region
+  location      = var.region
   force_destroy = var.force_destroy
   storage_class = var.storage_class
 
