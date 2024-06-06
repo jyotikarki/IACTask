@@ -24,7 +24,7 @@ module "common" {
 module "gcs" {
   for_each = local.vendor_data
 
-  source = "./modules/${each.key}/gcs"
+  source = "./modules/vendor/${each.key}/gcs"
 
   project_id  = each.value.project_id
   region      = each.value.region
@@ -34,7 +34,7 @@ module "gcs" {
 module "bigquery" {
   for_each = local.vendor_data
 
-  source = "./modules/${each.key}/bigquery"
+  source = "./modules/vendor/${each.key}/bigquery"
 
   project_id  = each.value.project_id
   region      = each.value.region
@@ -44,7 +44,7 @@ module "bigquery" {
 module "cloud_function" {
   for_each = local.vendor_data
 
-  source = "./modules/${each.key}/cloud_function"
+  source = "./modules/vendor/${each.key}/cloud_function"
 
   project_id    = each.value.project_id
   region        = each.value.region
@@ -57,7 +57,7 @@ module "cloud_function" {
 module "pubsub" {
   for_each = local.vendor_data
 
-  source = "./modules/${each.key}/pubsub"
+  source = "./modules/vendor/${each.key}/pubsub"
 
   project_id  = each.value.project_id
   region      = each.value.region
