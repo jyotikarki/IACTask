@@ -1,31 +1,50 @@
-module "gcs" {
-  source = "../../modules/vendor/vendor1/gcs"
-  project_id = var.project_id
-  region = var.region
-  vpc_name = var.vpc_name
-  vpc_cidr_block = var.vpc_cidr_block
-  public_subnets = var.public_subnets
-  private_subnets = var.private_subnets
-  service_account_email = var.service_account_email
+resource "google_compute_network" "vpc_network" {
+  name                    = var.vpc_name
+  auto_create_subnetworks = false
 }
 
-module "bigquery" {
-  source = "../../modules/vendor/vendor1/bigquery"
-  project_id = var.project_id
-  region = var.region
-  service_account_email = var.service_account_email
+resource "google_compute_subnetwork" "public_subnet" {
+  count                    = length(var.public_subnets)
+  name                     = var.public_subnets[count.index].name
+  ip_cidr_range            = var.public_subnets[count.index].cidr
+  region                   = var.region
+  network                  = google_compute_network.vpc_network.self_link
+  private_ip_google_access = true
 }
 
-module "cloud_function" {
-  source = "../../modules/vendor/vendor1/cloud_function"
-  project_id = var.project_id
-  region = var.region
-  service_account_email = var.service_account_email
+resource "google_compute_subnetwork" "private_subnet" {
+  count                    = length(var.private_subnets)
+  name                     = var.private_subnets[count.index].name
+  ip_cidr_range            = var.private_subnets[count.index].cidr
+  region                   = var.region
+  network                  = google_compute_network.vpc_network.self_link
+  private_ip_google_access = false
 }
 
-module "pubsub" {
-  source = "../../modules/vendor/vendor1/pubsub"
-  project_id = var.project_id
-  region = var.region
-  service_account_email = var.service_account_email
+# IAM bindings
+resource "google_project_iam_binding" "vpc_admin" {
+  project = var.project_id
+  role    = "roles/compute.networkAdmin"
+
+  members = [
+    "serviceAccount:${var.service_account_email}"
+  ]
+}
+
+resource "google_project_iam_binding" "subnet_admin" {
+  project = var.project_id
+  role    = "roles/compute.networkAdmin"
+
+  members = [
+    "serviceAccount:${var.service_account_email}"
+  ]
+}
+
+resource "google_project_iam_binding" "viewer" {
+  project = var.project_id
+  role    = "roles/viewer"
+
+  members = [
+    "serviceAccount:${var.service_account_email}"
+  ]
 }
