@@ -13,7 +13,7 @@ variable "region" {
 variable "vpc_name" {
   description = "The name of the VPC network."
   type        = string
-  default = "vendorvpc123"
+  default     = "vendorvpc123"
 }
 
 variable "vpc_cidr_block" {
@@ -21,6 +21,7 @@ variable "vpc_cidr_block" {
   type        = string
   default     = "10.0.0.0/16"
 } 
+
 variable "public_subnets" {
   description = "A list of maps describing the public subnets."
   type = list(object({
@@ -47,4 +48,9 @@ variable "private_subnets" {
       cidr = "10.0.3.0/24"
     }
   ]
+}
+
+variable "service_account_email" {
+  description = "The email of the service account to which the IAM roles will be assigned."
+  type        = string
 }
