@@ -1,3 +1,69 @@
+provider "google" {
+  project = var.project_id
+  region  = var.region
+}
+
+terraform {
+  backend "gcs" {
+    bucket  = "terraform-remote-backend-bucket"
+    prefix  = "terraform/state"
+  }
+}
+
+locals {
+  vendor_data = { for vendor, path in var.vendor_configs : 
+    vendor => jsondecode(file(path))
+  }
+}
+
+module "common" {
+  source                = "./modules/common"
+  service_account_email = "user:${var.service_account_email}"
+}
+
+module "gcs" {
+  for_each = local.vendor_data
+
+  source = "./modules/${each.key}/gcs"
+
+  project_id  = each.value.project_id
+  region      = each.value.region
+  bucket_name = each.value.bucket_name
+}
+
+module "bigquery" {
+  for_each = local.vendor_data
+
+  source = "./modules/${each.key}/bigquery"
+
+  project_id  = each.value.project_id
+  region      = each.value.region
+  dataset_id  = each.value.dataset_id
+}
+
+module "cloud_function" {
+  for_each = local.vendor_data
+
+  source = "./modules/${each.key}/cloud_function"
+
+  project_id    = each.value.project_id
+  region        = each.value.region
+  function_name = each.value.function_name
+  entry_point   = each.value.entry_point
+  bucket_name   = each.value.bucket_name
+  pubsub_name   = each.value.pubsub_name
+}
+
+module "pubsub" {
+  for_each = local.vendor_data
+
+  source = "./modules/${each.key}/pubsub"
+
+  project_id  = each.value.project_id
+  region      = each.value.region
+  topic_name  = each.value.topic_name
+}
+
 resource "google_compute_network" "vpc_network" {
   name                    = var.vpc_name
   auto_create_subnetworks = false
@@ -27,7 +93,7 @@ resource "google_project_iam_binding" "vpc_admin" {
   role    = "roles/compute.networkAdmin"
 
   members = [
-    "serviceAccount:${var.service_account_email}"
+    "user:${var.service_account_email}"
   ]
 }
 
@@ -36,7 +102,7 @@ resource "google_project_iam_binding" "subnet_admin" {
   role    = "roles/compute.networkAdmin"
 
   members = [
-    "serviceAccount:${var.service_account_email}"
+    "user:${var.service_account_email}"
   ]
 }
 
@@ -45,6 +111,6 @@ resource "google_project_iam_binding" "viewer" {
   role    = "roles/viewer"
 
   members = [
-    "serviceAccount:${var.service_account_email}"
+    "user:${var.service_account_email}"
   ]
 }
