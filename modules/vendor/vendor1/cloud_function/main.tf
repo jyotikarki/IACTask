@@ -9,8 +9,8 @@ resource "google_cloudfunctions_function" "function" {
   entry_point           = var.entry_point
 
   event_trigger {
-    event_type = "google.storage.object.finalize"
-    resource   = var.bucket_name
+    event_type = "google.pubsub.topic.publish"
+    resource   = var.pubsubname
   }
 
   environment_variables = {

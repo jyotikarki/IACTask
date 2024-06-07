@@ -22,6 +22,7 @@ resource "google_compute_subnetwork" "private_subnet" {
 }
 
 # IAM bindings
+
 resource "google_project_iam_binding" "vpc_admin" {
   project = var.project_id
   role    = "roles/compute.networkAdmin"

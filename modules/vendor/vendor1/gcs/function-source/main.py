@@ -95,26 +95,21 @@ def create_schema_from_yaml(table_schema):
             schemaField.fields = create_schema_from_yaml(column['fields'])
     return schema
 
-# Triggered by a change in a storage bucket
+# Triggered by a message on a Pub/Sub topic
 @functions_framework.cloud_event
-def _gcs(cloud_event):
-    data = cloud_event.data
+def hello_pubsub(cloud_event):
+    try:
+        data = cloud_event.data
+        pubsub_message = base64.b64decode(data["message"]["data"]).decode('utf-8')
+        
+        message_dict = yaml.safe_load(pubsub_message)  # Assuming the message is YAML-formatted; use json.loads if JSON-formatted
+        bucket = message_dict.get("bucket")
+        name = message_dict.get("name")
 
-    event_id = cloud_event["id"]
-    event_type = cloud_event["type"]
+        print(f"Received message: {pubsub_message}")
+        print(f"Bucket: {bucket}")
+        print(f"File: {name}")
 
-    bucket = data["bucket"]
-    name = data["name"]
-    metageneration = data["metageneration"]
-    timeCreated = data["timeCreated"]
-    updated = data["updated"]
-
-    print(f"Event ID: {event_id}")
-    print(f"Event type: {event_type}")
-    print(f"Bucket: {bucket}")
-    print(f"File: {name}")
-    print(f"Metageneration: {metageneration}")
-    print(f"Created: {timeCreated}")
-    print(f"Updated: {updated}")
-    
-    process_csv(bucket, name)
+        process_csv(bucket, name)
+    except Exception as e:
+        print(f"Error handling Pub/Sub message: {e}")

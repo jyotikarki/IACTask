@@ -1,6 +1,6 @@
 provider "google" {
-  project     = "itsme-1234"
-  region      = "us-central1"
+  project     = var.project_id
+  region      = var.region
 }
 
 terraform {
@@ -9,7 +9,6 @@ terraform {
     prefix  = "terraform/state"
   }
 }
-
 
 locals {
   vendor_data = { for vendor, path in var.vendor_configs : 
@@ -37,8 +36,9 @@ module "gcs_vendor1" {
   project_id  = local.vendor_data["vendor1"].project_id
   region      = local.vendor_data["vendor1"].region
   bucket_name = local.vendor_data["vendor1"].bucket_name
+  pubsubname    = local.vendor_data["vendor1"].pubsubname
 
-  depends_on = [module.common]
+  depends_on = [module.common,module.pubsub_vendor1]
 }
 
 module "bigquery_vendor1" {
@@ -50,6 +50,7 @@ module "bigquery_vendor1" {
   depends_on = [module.common]
 }
 
+
 module "cloud_function_vendor1" {
   source        = "./modules/vendor/vendor1/cloud_function"
   project_id    = local.vendor_data["vendor1"].project_id
@@ -59,7 +60,7 @@ module "cloud_function_vendor1" {
   bucket_name   = local.vendor_data["vendor1"].bucket_name
   pubsubname    = local.vendor_data["vendor1"].pubsubname
 
-  depends_on = [module.gcs_vendor1, module.bigquery_vendor1,module.pubsub_vendor1]
+  depends_on = [module.gcs_vendor1, module.pubsub_vendor1,module.bigquery_vendor1]
 }
 
 module "pubsub_vendor1" {
@@ -68,7 +69,7 @@ module "pubsub_vendor1" {
   pubsubname  = local.vendor_data["vendor1"].pubsubname
   region      = local.vendor_data["vendor1"].region
 
-  depends_on = [module.common,module.gcs_vendor1]
+  depends_on = [module.common]
 }
 
 module "gcs_vendor2" {
@@ -76,8 +77,9 @@ module "gcs_vendor2" {
   project_id  = local.vendor_data["vendor2"].project_id
   region      = local.vendor_data["vendor2"].region
   bucket_name = local.vendor_data["vendor2"].bucket_name
+  pubsubname    = local.vendor_data["vendor2"].pubsubname
 
-  depends_on = [module.common]
+  depends_on = [module.common,module.pubsub_vendor2]
 }
 
 module "bigquery_vendor2" {
@@ -107,5 +109,5 @@ module "pubsub_vendor2" {
   pubsubname  = local.vendor_data["vendor2"].pubsubname
   region      = local.vendor_data["vendor2"].region
 
-  depends_on = [module.common,module.gcs_vendor2]
+  depends_on = [module.common]
 }

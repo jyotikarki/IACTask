@@ -23,4 +23,10 @@ resource "google_storage_bucket_object" "function_zip" {
   bucket = google_storage_bucket.bucket.name
   source = data.archive_file.function_archive.output_path
 }
+resource "google_storage_notification" "notification" {
+  bucket = google_storage_bucket.bucket.name
+  topic  = var.pubsubname
+  payload_format = "JSON_API_V1"
+  event_types = ["OBJECT_FINALIZE"]
+}
 

@@ -6,6 +6,15 @@ variable "vendor_configs" {
   }
 }
 
+variable "project_id" {
+  type        = string
+  default = "itsme-1234"
+}
+
+variable "region" {
+  type        = string
+  default =  "us-central1"
+}
 
 
 

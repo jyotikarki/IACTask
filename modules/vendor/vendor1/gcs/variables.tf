@@ -30,4 +30,6 @@ variable "uniform_bucket_level_access" {
   default     = true
 }
 
-
+variable pubsubname {
+    type        = string
+}
