@@ -29,6 +29,9 @@ locals {
 # Common Module
 module "common" {
   source = "./modules/common"
+   project_id              = var.project_id
+  region                  = var.region
+  service_account_email   = var.service_account_email
 }
 
 module "gcs_vendor1" {

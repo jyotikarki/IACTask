@@ -3,7 +3,7 @@ resource "google_project_iam_binding" "viewer_role" {
   role    = "roles/viewer"
 
   members = [
-    "serviceAccount:${var.service_account_email}"
+    "user:${var.service_account_email}"
   ]
 }
 
@@ -12,7 +12,7 @@ resource "google_project_iam_binding" "editor_role" {
   role    = "roles/editor"
 
   members = [
-    "serviceAccount:${var.service_account_email}"
+    "user:${var.service_account_email}"
   ]
 }
 
