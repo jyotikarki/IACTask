@@ -53,5 +53,5 @@ variable "private_subnets" {
 variable "service_account_email" {
   description = "The email of the service account to which the IAM roles will be assigned."
   type        = string
-  default  = "jyotikarki99160@gmail.com"
+  default  = "terraformfinal@itsme-1234.iam.gserviceaccount.com"
 }
