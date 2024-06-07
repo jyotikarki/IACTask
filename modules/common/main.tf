@@ -41,11 +41,3 @@ resource "google_project_iam_binding" "subnet_admin" {
   ]
 }
 
-resource "google_project_iam_binding" "viewer" {
-  project = var.project_id
-  role    = "roles/viewer"
-
-  members = [
-    "serviceAccount:${var.service_account_email}"
-  ]
-}
