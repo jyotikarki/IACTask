@@ -1,3 +1,4 @@
+import base64
 import logging
 import os
 import re
@@ -17,7 +18,7 @@ with open("./schemas.yaml") as schema_file:
 
 # Set up Google Cloud clients
 PROJECT_ID = os.getenv('GCP_PROJECT', 'itsme-1234')  # Default to 'itsme-1234' if GCP_PROJECT env var is not set
-BQ_DATASET = 'vendor1_bq_dataset'
+BQ_DATASET = 'vendor1_bq_dataset_v1'
 CS = storage.Client()
 BQ = bigquery.Client()
 job_config = bigquery.LoadJobConfig()
