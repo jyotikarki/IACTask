@@ -18,7 +18,7 @@ variable "region" {
 variable "service_account_email" {
   description = "The email of the service account to which the IAM roles will be assigned."
   type        = string
-  default     = "your-service-account-email@example.com"
+  default     = "terraformfinal@itsme-1234.iam.gserviceaccount.com"
 }
 
 
