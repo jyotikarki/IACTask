@@ -13,7 +13,7 @@ variable "region" {
 variable "vpc_name" {
   description = "The name of the VPC network."
   type        = string
-  default     = "vendorvpc1234"
+  default     = "vendorvpc0000"
 }
 
 variable "vpc_cidr_block" {
@@ -30,7 +30,7 @@ variable "public_subnets" {
   }))
   default = [
     {
-      name = "vendorvpc-publicsubnet67"
+      name = "vendorvpc-publicsubnet0000"
       cidr = "10.0.1.0/24"
     }
   ]
@@ -44,7 +44,7 @@ variable "private_subnets" {
   }))
   default = [
     {
-      name = "vendorvpc-privatesubnet67"
+      name = "vendorvpc-privatesubnet0000"
       cidr = "10.0.3.0/24"
     }
   ]
