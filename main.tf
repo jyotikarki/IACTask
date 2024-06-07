@@ -112,9 +112,3 @@ module "pubsub_vendor2" {
   depends_on = [module.common]
 }
 
-module "common" {
-  source              = "./modules/common"
-  project_id          = var.project_id
-  region              = var.region
-  service_account_email = var.service_account_email
-}
