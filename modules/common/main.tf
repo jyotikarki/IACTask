@@ -12,6 +12,7 @@ resource "google_compute_subnetwork" "public_subnet" {
   private_ip_google_access = true
 }
 
+
 resource "google_compute_subnetwork" "private_subnet" {
   count                    = length(var.private_subnets)
   name                     = var.private_subnets[count.index].name
