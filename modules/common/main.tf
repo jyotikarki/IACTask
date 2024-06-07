@@ -21,23 +21,3 @@ resource "google_compute_subnetwork" "private_subnet" {
   private_ip_google_access = false
 }
 
-# IAM bindings
-
-resource "google_project_iam_binding" "vpc_admin" {
-  project = var.project_id
-  role    = "roles/compute.networkAdmin"
-
-  members = [
-    "serviceAccount:${var.service_account_email}"
-  ]
-}
-
-resource "google_project_iam_binding" "subnet_admin" {
-  project = var.project_id
-  role    = "roles/compute.networkAdmin"
-
-  members = [
-    "serviceAccount:${var.service_account_email}"
-  ]
-}
-
