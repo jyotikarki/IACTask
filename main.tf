@@ -32,8 +32,6 @@ module "common" {
    project_id              = var.project_id
   region                  = var.region
   service_account_email   = var.service_account_email
-   dataset_id   = var.dataset_id
-  output_table_id = var.output_table_id
 }
 
 
@@ -115,7 +113,6 @@ module "pubsub_vendor2" {
   project_id  = local.vendor_data["vendor2"].project_id
   pubsubname  = local.vendor_data["vendor2"].pubsubname
   region      = local.vendor_data["vendor2"].region
-
   depends_on = [module.common]
 }
 

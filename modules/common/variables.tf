@@ -55,13 +55,5 @@ variable "service_account_email" {
   type        = string
   default  = "terraformfinal@itsme-1234.iam.gserviceaccount.com"
 }
-variable "dataset_id" {
-  description = "The dataset ID for BigQuery"
-  type        = string
-}
 
-variable "output_table_id" {
-  description = "The table ID for the output table"
-  type        = string
-}
 
