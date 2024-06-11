@@ -1,0 +1,13 @@
+[
+    {
+      "name": "column1",
+      "type": "STRING",
+      "mode": "REQUIRED"
+    },
+    {
+      "name": "column2",
+      "type": "INTEGER",
+      "mode": "NULLABLE"
+    }
+  ]
+  

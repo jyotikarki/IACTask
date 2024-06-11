@@ -32,7 +32,11 @@ module "common" {
    project_id              = var.project_id
   region                  = var.region
   service_account_email   = var.service_account_email
+   dataset_id   = var.dataset_id
+  output_table_id = var.output_table_id
 }
+
+
 
 module "gcs_vendor1" {
   source      = "./modules/vendor/vendor1/gcs"

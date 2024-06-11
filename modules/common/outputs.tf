@@ -12,3 +12,8 @@ output "private_subnets" {
   description = "The private subnets."
   value       = google_compute_subnetwork.private_subnet
 }
+
+output "output_table_id" {
+  value = google_bigquery_table.output_table.table_id
+}
+
