@@ -11,7 +11,7 @@ resource "google_bigquery_table" "output_table" {
   table_id   = var.output_table_id
   project    = var.project_id
 
-  schema = file("${path.module}/schemas.yaml")
+  schema = file("${path.module}/schemas.json")
 
   time_partitioning {
     type = "DAY"
