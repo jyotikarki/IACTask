@@ -19,3 +19,8 @@ variable "default_table_expiration_ms" {
   type        = number
   default     = null
 }
+variable "output_table_id" {
+  description = "The table ID for the output table"
+  type        = string
+  default = "okok"
+}
