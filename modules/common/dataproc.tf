@@ -3,7 +3,7 @@ resource "google_dataproc_cluster" "cluster" {
   project = var.project_id
   region = variable
 
-  cluster_config {
+cluster_config {
     master_config {
       num_instances = 1
       machine_type  = "n1-standard-2"
@@ -11,6 +11,7 @@ resource "google_dataproc_cluster" "cluster" {
         boot_disk_size_gb = 50  # Adjust the size accordingly
       }
     }
+  
 
     worker_config {
       num_instances = 2
