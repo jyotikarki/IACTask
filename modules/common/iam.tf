@@ -10,7 +10,6 @@ resource "google_project_iam_binding" "viewer_role" {
 resource "google_project_iam_binding" "editor_role" {
   project = var.project_id
   role    = "roles/editor"
-
   members = [
     "serviceAccount:${var.service_account_email}"
   ]

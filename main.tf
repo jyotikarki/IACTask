@@ -42,7 +42,6 @@ module "gcs_vendor1" {
   region      = local.vendor_data["vendor1"].region
   bucket_name = local.vendor_data["vendor1"].bucket_name
   pubsubname    = local.vendor_data["vendor1"].pubsubname
-
   depends_on = [module.common,module.pubsub_vendor1]
 }
 
@@ -51,7 +50,6 @@ module "bigquery_vendor1" {
   project_id = local.vendor_data["vendor1"].project_id
   region     = local.vendor_data["vendor1"].region
   dataset_id = local.vendor_data["vendor1"].dataset_id
-
   depends_on = [module.common]
 }
 
@@ -64,7 +62,6 @@ module "cloud_function_vendor1" {
   entry_point   = local.vendor_data["vendor1"].entry_point
   bucket_name   = local.vendor_data["vendor1"].bucket_name
   pubsubname    = local.vendor_data["vendor1"].pubsubname
-
   depends_on = [module.gcs_vendor1, module.pubsub_vendor1,module.bigquery_vendor1]
 }
 
@@ -73,7 +70,6 @@ module "pubsub_vendor1" {
   project_id  = local.vendor_data["vendor1"].project_id
   pubsubname  = local.vendor_data["vendor1"].pubsubname
   region      = local.vendor_data["vendor1"].region
-
   depends_on = [module.common]
 }
 
@@ -83,7 +79,6 @@ module "gcs_vendor2" {
   region      = local.vendor_data["vendor2"].region
   bucket_name = local.vendor_data["vendor2"].bucket_name
   pubsubname    = local.vendor_data["vendor2"].pubsubname
-
   depends_on = [module.common,module.pubsub_vendor2]
 }
 
@@ -92,7 +87,6 @@ module "bigquery_vendor2" {
   project_id = local.vendor_data["vendor2"].project_id
   region     = local.vendor_data["vendor2"].region
   dataset_id = local.vendor_data["vendor2"].dataset_id
-
   depends_on = [module.common]
 }
 
@@ -104,7 +98,6 @@ module "cloud_function_vendor2" {
   entry_point   = local.vendor_data["vendor2"].entry_point
   bucket_name   = local.vendor_data["vendor2"].bucket_name
   pubsubname    = local.vendor_data["vendor2"].pubsubname
-
   depends_on = [module.gcs_vendor2, module.bigquery_vendor2,module.pubsub_vendor2]
 }
 
