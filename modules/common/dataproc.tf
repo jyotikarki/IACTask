@@ -1,7 +1,7 @@
 resource "google_dataproc_cluster" "cluster" {
   name   = "example-cluster"
   project = var.project_id
-  region = v
+  region = variable
 
   cluster_config {
     master_config {
